@@ -1,0 +1,50 @@
+<div class="container"  novalidate>
+  <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)" class="form">
+    <div  class="form-element" formGroupName="name">
+      <mat-form-field appearance="fill">
+        <mat-label>Title</mat-label>
+        <mat-select formControlName="title" >
+          <mat-option value="Mr">
+           Mr
+          </mat-option>
+          <mat-option value="Ms">
+            Ms
+           </mat-option>
+        </mat-select>
+
+      </mat-form-field>
+      <mat-form-field class="form-element">
+        <input matInput placeholder="Title" type="text" id="username" value="street" formControlName="title" class="form-control">
+      </mat-form-field>
+      <mat-form-field class="form-element">
+        <input matInput placeholder="First Name" type="text" id="username" value="street" formControlName="first" class="form-control">
+      </mat-form-field>
+      <mat-form-field class="form-element">
+        <input matInput placeholder="Last Name" type="text" id="username" value="street" formControlName="last" class="form-control">
+      </mat-form-field>
+   </div>
+   <mat-form-field appearance="fill">
+    <mat-label>Angular forms</mat-label>
+    <input matInput [matDatepicker]="picker1" formControlName="dob">
+    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+    <mat-datepicker #picker1></mat-datepicker>
+  </mat-form-field>
+
+    <mat-form-field class="form-element">
+      <input matInput placeholder="Emailaddress" formControlName="email">
+    </mat-form-field>
+    <mat-form-field class="form-element">
+      <input matInput placeholder="Username" formControlName="username">
+    </mat-form-field>
+    <mat-form-field class="form-element">
+      <input matInput placeholder="Password" formControlName="password">
+    </mat-form-field>
+
+
+    <div class="form-element">
+      <button mat-raised-button color="primary" type="submit" class="button" [disabled]="!formGroup.valid">Submit Form</button>
+    </div>
+
+  </form>
+</div>
+
