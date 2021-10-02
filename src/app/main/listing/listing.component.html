@@ -1,7 +1,10 @@
 <a href="/home/create">Create User</a>
-<mat-form-field class="form-element">
-  <input matInput placeholder="Username" [formControl]="searhcterm">
-</mat-form-field>
+<div>
+  <mat-form-field class="form-element">
+    <input matInput placeholder="Username" [formControl]="searhcterm">
+  </mat-form-field>
+</div>
+
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
   <!--- Note that these columns can be defined in any order.

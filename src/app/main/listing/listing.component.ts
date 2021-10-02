@@ -22,7 +22,7 @@ export class ListingComponent implements OnInit {
       debounceTime(400), // discard emitted values that take less than the specified time between output
       distinctUntilChanged() // only emit when value has changed
     ).subscribe(term => {
-      this.dataSource = this.userlist.filter(item => item.user.name.first.startsWith(term));
+      this.dataSource = this.userlist.filter(item => item.user.name.first.includes(term));
     });
   }
 
