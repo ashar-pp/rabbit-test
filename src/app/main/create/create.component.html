@@ -1,5 +1,5 @@
 <div class="container"  novalidate>
-  <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)" class="form">
+  <form [formGroup]="formGroup" (ngSubmit)="onSubmit()" class="form">
     <div  class="form-element" formGroupName="name">
       <mat-form-field appearance="fill">
         <mat-label>Title</mat-label>
@@ -23,13 +23,26 @@
         <input matInput placeholder="Last Name" type="text" id="username" value="street" formControlName="last" class="form-control">
       </mat-form-field>
    </div>
+   <mat-form-field class="form-element">
+    <input matInput placeholder="Phone" formControlName="phone">
+  </mat-form-field>
    <mat-form-field appearance="fill">
     <mat-label>Angular forms</mat-label>
     <input matInput [matDatepicker]="picker1" formControlName="dob">
     <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
     <mat-datepicker #picker1></mat-datepicker>
   </mat-form-field>
-
+  <mat-form-field appearance="fill">
+    <mat-label>Gender</mat-label>
+    <mat-select formControlName="gender" >
+      <mat-option value="Male">
+       Male
+      </mat-option>
+      <mat-option value="Female">
+        Female
+       </mat-option>
+    </mat-select>
+  </mat-form-field>
     <mat-form-field class="form-element">
       <input matInput placeholder="Emailaddress" formControlName="email">
     </mat-form-field>
@@ -42,9 +55,11 @@
 
 
     <div class="form-element">
-      <button mat-raised-button color="primary" type="submit" class="button" [disabled]="!formGroup.valid">Submit Form</button>
+      <button mat-raised-button color="primary" type="submit" class="button" >Submit Form</button>
     </div>
-
+    <div class="form-element">
+      <button mat-raised-button color="primary" type="button" class="button" (click)="back()" >Back</button>
+    </div>
   </form>
 </div>
 

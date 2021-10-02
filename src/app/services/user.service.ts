@@ -6,7 +6,6 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class UserService {
-
   constructor(private http: HttpClient) {
 
   }
@@ -45,5 +44,16 @@ export class UserService {
       return rsrs;
     }));
   }
+  getFullList(): any[] {
+    const list: any = localStorage.getItem('users');
+    return JSON.parse(list);
+  }
+  submitUser(form: any) {
+    const list: any = localStorage.getItem('users');
+    const newlist =  JSON.parse(list);
+    newlist.unshift({user:form});
+    localStorage.setItem('users', JSON.stringify(newlist));
+  }
+
 }
 

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl, AbstractControl } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-create',
@@ -12,7 +14,7 @@ export class CreateComponent implements OnInit {
   formGroup: FormGroup;
   titleAlert: string = 'This field is required';
   post: any = '';
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private router: Router, private userservice: UserService) {
     this.formGroup = this.formBuilder.group({
       'name': this.formBuilder.group({
         'title':[''],
@@ -40,8 +42,18 @@ export class CreateComponent implements OnInit {
 
 
 
-  onSubmit(post: any) {
-    this.post = post;
+  onSubmit() {
+    if(this.formGroup.valid){
+      const form = this.formGroup.value;
+      this.userservice.submitUser(form);
+      this.router.navigate(['/home']);
+    }else{
+      alert('has validator error');
+    }
+    console.log(this.formGroup);
   }
+  back(): void {
+    this.router.navigate(['/home']);
 
+  }
 }
